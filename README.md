@@ -160,7 +160,7 @@ Mỗi khi thay đổi hành vi ứng dụng:
 
 ```powershell
 # 1) vào thư mục dự án
-cd "e:\RHNA\Student\CT214H - Web\THI\W3Schools Quiz Results_files"
+cd "../CTUQuiz/"
 
 # 2) cài đặt (an toàn, có thể bỏ qua nếu không cần)
 npm install
