@@ -1,0 +1,9 @@
+{
+  "name": "quiz-exam-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quiz Exam Studio with separated frontend and backend structure.",
+  "scripts": {
+    "start": "node backend/server.js"
+  }
+}

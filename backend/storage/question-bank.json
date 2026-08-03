@@ -1,0 +1,1038 @@
+{
+  "version": 2,
+  "currentBankId": "imported-1785754262338",
+  "uploadedBanks": [
+    {
+      "id": "imported-1785754262338",
+      "source": "imported",
+      "fileName": "TN_on_tap_1_Full_English_Updated.docx",
+      "name": {
+        "vi": "Bộ import: TN_on_tap_1_Full_English_Updated",
+        "en": "Imported bank: TN_on_tap_1_Full_English_Updated"
+      },
+      "questions": [
+        {
+          "id": "1",
+          "number": 1,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "C",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 1: **[[/DOCX_COLOR]]**..... is a testing stage in which individual modules (units) of an application are combined and the data communication between those modules is tested.**",
+              "explanation": "",
+              "options": {
+                "A": "Acceptance Testing",
+                "B": "System Testing",
+                "C": "Integration Testing",
+                "D": "Unit Testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 1: **[[/DOCX_COLOR]]**..... is a testing stage in which individual modules (units) of an application are combined and the data communication between those modules is tested.**",
+              "explanation": "",
+              "options": {
+                "A": "Acceptance Testing",
+                "B": "System Testing",
+                "C": "Integration Testing",
+                "D": "Unit Testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "2",
+          "number": 2,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "A",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 2: **[[/DOCX_COLOR]]**Which statement is correct about the relationship among an error, a defect, and a failure?**",
+              "explanation": "",
+              "options": {
+                "A": "All of the above are correct",
+                "B": "A defect may never be activated because the user does not use the relevant function or because the required condition does not occur; therefore, a failure has not occurred",
+                "C": "Incorrect lines of code may be corrected or neutralized by subsequent lines of code",
+                "D": "Incorrect lines of code may not affect the software's functionality and therefore may not cause a defect"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 2: **[[/DOCX_COLOR]]**Which statement is correct about the relationship among an error, a defect, and a failure?**",
+              "explanation": "",
+              "options": {
+                "A": "All of the above are correct",
+                "B": "A defect may never be activated because the user does not use the relevant function or because the required condition does not occur; therefore, a failure has not occurred",
+                "C": "Incorrect lines of code may be corrected or neutralized by subsequent lines of code",
+                "D": "Incorrect lines of code may not affect the software's functionality and therefore may not cause a defect"
+              }
+            }
+          }
+        },
+        {
+          "id": "3",
+          "number": 3,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 3: **[[/DOCX_COLOR]]**Which type of testing does not execute the code (does not run the program)?**",
+              "explanation": "",
+              "options": {
+                "A": "Functional testing - black-box testing",
+                "B": "Non-functional testing",
+                "C": "Structure-based testing (white-box testing)",
+                "D": "Static testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 3: **[[/DOCX_COLOR]]**Which type of testing does not execute the code (does not run the program)?**",
+              "explanation": "",
+              "options": {
+                "A": "Functional testing - black-box testing",
+                "B": "Non-functional testing",
+                "C": "Structure-based testing (white-box testing)",
+                "D": "Static testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "4",
+          "number": 4,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 4: **[[/DOCX_COLOR]]**What is an advantage of automated testing compared with manual testing?**",
+              "explanation": "",
+              "options": {
+                "A": "It is difficult to perform complex calculations, has little reusability, consumes more testing time, is prone to human errors or mistakes, and requires more personnel",
+                "B": "It requires fewer personnel, supports reuse, increases test coverage in a shorter testing time, provides high reliability, and can quickly execute multiple test cases in parallel",
+                "C": "All of the above are incorrect",
+                "D": "It takes time to develop and maintain the testing project, costs money to purchase testing tools, requires a test environment to be installed, and debugging test scripts is difficult"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 4: **[[/DOCX_COLOR]]**What is an advantage of automated testing compared with manual testing?**",
+              "explanation": "",
+              "options": {
+                "A": "It is difficult to perform complex calculations, has little reusability, consumes more testing time, is prone to human errors or mistakes, and requires more personnel",
+                "B": "It requires fewer personnel, supports reuse, increases test coverage in a shorter testing time, provides high reliability, and can quickly execute multiple test cases in parallel",
+                "C": "All of the above are incorrect",
+                "D": "It takes time to develop and maintain the testing project, costs money to purchase testing tools, requires a test environment to be installed, and debugging test scripts is difficult"
+              }
+            }
+          }
+        },
+        {
+          "id": "5",
+          "number": 5,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 5: **[[/DOCX_COLOR]]**(The source contains the phrase 'No answer yet') Why is incremental testing preferred to Big Bang testing?**",
+              "explanation": "",
+              "options": {
+                "A": "It is suitable for small projects",
+                "B": "More work must be performed to test a program",
+                "C": "All of the above are incorrect",
+                "D": "Because incremental testing is better able to detect, screen, and isolate defects early"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 5: **[[/DOCX_COLOR]]**(The source contains the phrase 'No answer yet') Why is incremental testing preferred to Big Bang testing?**",
+              "explanation": "",
+              "options": {
+                "A": "It is suitable for small projects",
+                "B": "More work must be performed to test a program",
+                "C": "All of the above are incorrect",
+                "D": "Because incremental testing is better able to detect, screen, and isolate defects early"
+              }
+            }
+          }
+        },
+        {
+          "id": "6",
+          "number": 6,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "A",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 6: **[[/DOCX_COLOR]]**Which McCall software quality factor is used to satisfy the following requirement? It is testing at the lowest level (methods, functions, and classes in the source code). It is intended to ensure ****that these components operate correctly as required. Testing at this stage is usually performed by developers while coding.**",
+              "explanation": "",
+              "options": {
+                "A": "Unit Testing",
+                "B": "System Testing",
+                "C": "Integration Testing",
+                "D": "Acceptance Testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 6: **[[/DOCX_COLOR]]**Which McCall software quality factor is used to satisfy the following requirement? It is testing at the lowest level (methods, functions, and classes in the source code). It is intended to ensure ****that these components operate correctly as required. Testing at this stage is usually performed by developers while coding.**",
+              "explanation": "",
+              "options": {
+                "A": "Unit Testing",
+                "B": "System Testing",
+                "C": "Integration Testing",
+                "D": "Acceptance Testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "7",
+          "number": 7,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "C",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 7: **[[/DOCX_COLOR]]**... is an integration testing approach in which the lowest-level modules are tested first. They are then used to facilitate testing of higher-level modules. This process is repeated until the highest-level module has been tested.**",
+              "explanation": "",
+              "options": {
+                "A": "Top-down testing",
+                "B": "Big Bang testing",
+                "C": "Bottom-up testing",
+                "D": "All of the above are correct"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 7: **[[/DOCX_COLOR]]**... is an integration testing approach in which the lowest-level modules are tested first. They are then used to facilitate testing of higher-level modules. This process is repeated until the highest-level module has been tested.**",
+              "explanation": "",
+              "options": {
+                "A": "Top-down testing",
+                "B": "Big Bang testing",
+                "C": "Bottom-up testing",
+                "D": "All of the above are correct"
+              }
+            }
+          }
+        },
+        {
+          "id": "8",
+          "number": 8,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 8: **[[/DOCX_COLOR]]**Black-box testing techniques include:**",
+              "explanation": "",
+              "options": {
+                "A": "Statement coverage and branch coverage",
+                "B": "Equivalence partitioning, boundary value analysis, decision tables, state transition diagrams, and error guessing",
+                "C": "Loop coverage and basis path coverage",
+                "D": "Condition coverage and multiple-condition decision coverage"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 8: **[[/DOCX_COLOR]]**Black-box testing techniques include:**",
+              "explanation": "",
+              "options": {
+                "A": "Statement coverage and branch coverage",
+                "B": "Equivalence partitioning, boundary value analysis, decision tables, state transition diagrams, and error guessing",
+                "C": "Loop coverage and basis path coverage",
+                "D": "Condition coverage and multiple-condition decision coverage"
+              }
+            }
+          }
+        },
+        {
+          "id": "9",
+          "number": 9,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "C",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 9: **[[/DOCX_COLOR]]**Why is incremental testing preferred to Big Bang testing?**",
+              "explanation": "",
+              "options": {
+                "A": "More work must be performed to test a program",
+                "B": "All of the above are incorrect",
+                "C": "Because incremental testing is better able to detect, screen, and isolate defects early",
+                "D": "It is suitable for small projects"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 9: **[[/DOCX_COLOR]]**Why is incremental testing preferred to Big Bang testing?**",
+              "explanation": "",
+              "options": {
+                "A": "More work must be performed to test a program",
+                "B": "All of the above are incorrect",
+                "C": "Because incremental testing is better able to detect, screen, and isolate defects early",
+                "D": "It is suitable for small projects"
+              }
+            }
+          }
+        },
+        {
+          "id": "10",
+          "number": 10,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 10: **[[/DOCX_COLOR]]**The main concern of acceptance testing is:**",
+              "explanation": "",
+              "options": {
+                "A": "Testing whether the system operates well when integrated with other systems",
+                "B": "Finding defects in the system",
+                "C": "Ensuring that the system is acceptable to all users",
+                "D": "Testing from a business perspective (determining whether the functions support the actual work of real users)"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 10: **[[/DOCX_COLOR]]**The main concern of acceptance testing is:**",
+              "explanation": "",
+              "options": {
+                "A": "Testing whether the system operates well when integrated with other systems",
+                "B": "Finding defects in the system",
+                "C": "Ensuring that the system is acceptable to all users",
+                "D": "Testing from a business perspective (determining whether the functions support the actual work of real users)"
+              }
+            }
+          }
+        },
+        {
+          "id": "11",
+          "number": 11,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 11: **[[/DOCX_COLOR]]**According to IEEE, which of the following is not an area of Software Quality Assurance (SQA) activity?**",
+              "explanation": "",
+              "options": {
+                "A": "Product quality assurance",
+                "B": "Establishing a software quality assurance process",
+                "C": "Process quality assurance",
+                "D": "Service quality assurance"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 11: **[[/DOCX_COLOR]]**According to IEEE, which of the following is not an area of Software Quality Assurance (SQA) activity?**",
+              "explanation": "",
+              "options": {
+                "A": "Product quality assurance",
+                "B": "Establishing a software quality assurance process",
+                "C": "Process quality assurance",
+                "D": "Service quality assurance"
+              }
+            }
+          }
+        },
+        {
+          "id": "12",
+          "number": 12,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 12: **[[/DOCX_COLOR]]**...... is a type of integration testing in which software modules, hardware modules, or both are integrated all at once into a complete component or system.**",
+              "explanation": "",
+              "options": {
+                "A": "Incremental testing",
+                "B": "Big Bang testing",
+                "C": "Black-box testing",
+                "D": "White-box testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 12: **[[/DOCX_COLOR]]**...... is a type of integration testing in which software modules, hardware modules, or both are integrated all at once into a complete component or system.**",
+              "explanation": "",
+              "options": {
+                "A": "Incremental testing",
+                "B": "Big Bang testing",
+                "C": "Black-box testing",
+                "D": "White-box testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "13",
+          "number": 13,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 13: **[[/DOCX_COLOR]]**Which review method involves senior management and has the primary purpose of approving design products?**",
+              "explanation": "",
+              "options": {
+                "A": "Inspection",
+                "B": "Formal Design Review",
+                "C": "All of the above are correct",
+                "D": "Walkthrough"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 13: **[[/DOCX_COLOR]]**Which review method involves senior management and has the primary purpose of approving design products?**",
+              "explanation": "",
+              "options": {
+                "A": "Inspection",
+                "B": "Formal Design Review",
+                "C": "All of the above are correct",
+                "D": "Walkthrough"
+              }
+            }
+          }
+        },
+        {
+          "id": "14",
+          "number": 14,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 14: **[[/DOCX_COLOR]]**An input field accepts birth years from 1900 to 2021. Which values should be selected for this field using Boundary Value Analysis?**",
+              "explanation": "",
+              "options": {
+                "A": "1899, 1900, 2020, 2021, 1950",
+                "B": "All of the above are correct",
+                "C": "1900, 1901, 2020, 2021, 1950",
+                "D": "1899, 1990, 2021, 2022, 1950"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 14: **[[/DOCX_COLOR]]**An input field accepts birth years from 1900 to 2021. Which values should be selected for this field using Boundary Value Analysis?**",
+              "explanation": "",
+              "options": {
+                "A": "1899, 1900, 2020, 2021, 1950",
+                "B": "All of the above are correct",
+                "C": "1900, 1901, 2020, 2021, 1950",
+                "D": "1899, 1990, 2021, 2022, 1950"
+              }
+            }
+          }
+        },
+        {
+          "id": "15",
+          "number": 15,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "A",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 15: **[[/DOCX_COLOR]]**Which review method involves senior management and has the primary purpose of approving design products?**",
+              "explanation": "",
+              "options": {
+                "A": "Formal Design Review (Design Review/DR)",
+                "B": "Inspection",
+                "C": "All of the above are correct",
+                "D": "Walkthrough"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 15: **[[/DOCX_COLOR]]**Which review method involves senior management and has the primary purpose of approving design products?**",
+              "explanation": "",
+              "options": {
+                "A": "Formal Design Review (Design Review/DR)",
+                "B": "Inspection",
+                "C": "All of the above are correct",
+                "D": "Walkthrough"
+              }
+            }
+          }
+        },
+        {
+          "id": "16",
+          "number": 16,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 16: **[[/DOCX_COLOR]]**Which three quality factors are commonly of interest to developers but are of less interest to customers?**",
+              "explanation": "",
+              "options": {
+                "A": "Portability, reusability, and interoperability",
+                "B": "Portability, reusability, and testability",
+                "C": "Correctness, reliability, and efficiency",
+                "D": "Reliability, efficiency, and integrity"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 16: **[[/DOCX_COLOR]]**Which three quality factors are commonly of interest to developers but are of less interest to customers?**",
+              "explanation": "",
+              "options": {
+                "A": "Portability, reusability, and interoperability",
+                "B": "Portability, reusability, and testability",
+                "C": "Correctness, reliability, and efficiency",
+                "D": "Reliability, efficiency, and integrity"
+              }
+            }
+          }
+        },
+        {
+          "id": "17",
+          "number": 17,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 17: **[[/DOCX_COLOR]]**... includes features of both black-box testing and white-box testing.**",
+              "explanation": "",
+              "options": {
+                "A": "Black-box testing",
+                "B": "Hybrid testing",
+                "C": "White-box testing",
+                "D": "All of the above are incorrect"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 17: **[[/DOCX_COLOR]]**... includes features of both black-box testing and white-box testing.**",
+              "explanation": "",
+              "options": {
+                "A": "Black-box testing",
+                "B": "Hybrid testing",
+                "C": "White-box testing",
+                "D": "All of the above are incorrect"
+              }
+            }
+          }
+        },
+        {
+          "id": "18",
+          "number": 18,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 18: **[[/DOCX_COLOR]]**A dealer sells printer ink cartridges. The minimum order quantity is 5. A 20% discount is given for orders of 100 or more cartridges. Using Boundary Value Analysis, you are asked to prepare test cases with different order quantities. Which group of test inputs should be used to test the normal-price case?**",
+              "explanation": "",
+              "options": {
+                "A": "5, 6, 99, 100, 50",
+                "B": "4, 5, 100, 101, 50",
+                "C": "5, 6, 100, 101, 50",
+                "D": "4, 5, 99, 100, 50"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 18: **[[/DOCX_COLOR]]**A dealer sells printer ink cartridges. The minimum order quantity is 5. A 20% discount is given for orders of 100 or more cartridges. Using Boundary Value Analysis, you are asked to prepare test cases with different order quantities. Which group of test inputs should be used to test the normal-price case?**",
+              "explanation": "",
+              "options": {
+                "A": "5, 6, 99, 100, 50",
+                "B": "4, 5, 100, 101, 50",
+                "C": "5, 6, 100, 101, 50",
+                "D": "4, 5, 99, 100, 50"
+              }
+            }
+          }
+        },
+        {
+          "id": "19",
+          "number": 19,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "A",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 19: **[[/DOCX_COLOR]]**Which item is not one of the four software components defined by IEEE?**",
+              "explanation": "",
+              "options": {
+                "A": "The devices used to install the software",
+                "B": "The data required to operate the software system",
+                "C": "Computer programs",
+                "D": "Procedures and documentation"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 19: **[[/DOCX_COLOR]]**Which item is not one of the four software components defined by IEEE?**",
+              "explanation": "",
+              "options": {
+                "A": "The devices used to install the software",
+                "B": "The data required to operate the software system",
+                "C": "Computer programs",
+                "D": "Procedures and documentation"
+              }
+            }
+          }
+        },
+        {
+          "id": "20",
+          "number": 20,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 20: **[[/DOCX_COLOR]]**What is an advantage of Selenium compared with other automated testing tools such as QuickTest Professional (QTP) and IBM RTF?**",
+              "explanation": "",
+              "options": {
+                "A": "It performs tests quickly and accurately, requires fewer human resources, supports regression testing and frequent testing, and does not require a tester to remain at the computer while tests are running",
+                "B": "It is open source, low cost, uses few hardware resources, is compatible with multiple browsers, supports multiple programming languages, is user-friendly, and supports multiple operating systems",
+                "C": "It lacks technical support personnel, requires programming experience, and can test only web applications",
+                "D": "It runs only on Windows and requires no programming experience"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 20: **[[/DOCX_COLOR]]**What is an advantage of Selenium compared with other automated testing tools such as QuickTest Professional (QTP) and IBM RTF?**",
+              "explanation": "",
+              "options": {
+                "A": "It performs tests quickly and accurately, requires fewer human resources, supports regression testing and frequent testing, and does not require a tester to remain at the computer while tests are running",
+                "B": "It is open source, low cost, uses few hardware resources, is compatible with multiple browsers, supports multiple programming languages, is user-friendly, and supports multiple operating systems",
+                "C": "It lacks technical support personnel, requires programming experience, and can test only web applications",
+                "D": "It runs only on Windows and requires no programming experience"
+              }
+            }
+          }
+        },
+        {
+          "id": "21",
+          "number": 21,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "A",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 21: **[[/DOCX_COLOR]]**In ......, the program code is executed (run).**",
+              "explanation": "",
+              "options": {
+                "A": "Dynamic testing",
+                "B": "Static testing",
+                "C": "undefined",
+                "D": "undefined"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 21: **[[/DOCX_COLOR]]**In ......, the program code is executed (run).**",
+              "explanation": "",
+              "options": {
+                "A": "Dynamic testing",
+                "B": "Static testing",
+                "C": "undefined",
+                "D": "undefined"
+              }
+            }
+          }
+        },
+        {
+          "id": "22",
+          "number": 22,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 22: **[[/DOCX_COLOR]]**The main concern of acceptance testing is:**",
+              "explanation": "",
+              "options": {
+                "A": "Finding defects in the system",
+                "B": "Testing whether the system operates well when integrated with other systems",
+                "C": "Testing from a business perspective (determining whether the functions support the actual work of real users)",
+                "D": "Ensuring that the system is acceptable to all users"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 22: **[[/DOCX_COLOR]]**The main concern of acceptance testing is:**",
+              "explanation": "",
+              "options": {
+                "A": "Finding defects in the system",
+                "B": "Testing whether the system operates well when integrated with other systems",
+                "C": "Testing from a business perspective (determining whether the functions support the actual work of real users)",
+                "D": "Ensuring that the system is acceptable to all users"
+              }
+            }
+          }
+        },
+        {
+          "id": "23",
+          "number": 23,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 23: **[[/DOCX_COLOR]]**...... is a form of testing in which the tester knows the program's internal structures (source code, data processing, and so on). Testing is based on analysis of the internal structure of the component or system.**",
+              "explanation": "",
+              "options": {
+                "A": "Black-box testing",
+                "B": "Integration testing",
+                "C": "Black-box testing",
+                "D": "White-box testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 23: **[[/DOCX_COLOR]]**...... is a form of testing in which the tester knows the program's internal structures (source code, data processing, and so on). Testing is based on analysis of the internal structure of the component or system.**",
+              "explanation": "",
+              "options": {
+                "A": "Black-box testing",
+                "B": "Integration testing",
+                "C": "Black-box testing",
+                "D": "White-box testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "24",
+          "number": 24,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 24: **[[/DOCX_COLOR]]**What is the main benefit of performing quality assurance activities, such as inspections, very early in the project life cycle?**",
+              "explanation": "",
+              "options": {
+                "A": "Detecting many defects early",
+                "B": "All of the above are correct",
+                "C": "Preventing defects from being introduced into the code",
+                "D": "Increasing productivity and reducing software development cost"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 24: **[[/DOCX_COLOR]]**What is the main benefit of performing quality assurance activities, such as inspections, very early in the project life cycle?**",
+              "explanation": "",
+              "options": {
+                "A": "Detecting many defects early",
+                "B": "All of the above are correct",
+                "C": "Preventing defects from being introduced into the code",
+                "D": "Increasing productivity and reducing software development cost"
+              }
+            }
+          }
+        },
+        {
+          "id": "25",
+          "number": 25,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "C",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 25: **[[/DOCX_COLOR]]**Which of the following is not a primary purpose of regression testing?**",
+              "explanation": "",
+              "options": {
+                "A": "To save the effort required to retest the entire system",
+                "B": "To ensure that newly added functions contain no defects",
+                "C": "To ensure that new test cases do not duplicate old test cases",
+                "D": "To ensure that a new software version does not break functions that were working correctly"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 25: **[[/DOCX_COLOR]]**Which of the following is not a primary purpose of regression testing?**",
+              "explanation": "",
+              "options": {
+                "A": "To save the effort required to retest the entire system",
+                "B": "To ensure that newly added functions contain no defects",
+                "C": "To ensure that new test cases do not duplicate old test cases",
+                "D": "To ensure that a new software version does not break functions that were working correctly"
+              }
+            }
+          }
+        },
+        {
+          "id": "26",
+          "number": 26,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "A",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 26: **[[/DOCX_COLOR]]**Who finds and records software faults, defects, or bugs as their primary responsibility?**",
+              "explanation": "",
+              "options": {
+                "A": "Tester",
+                "B": "Customer",
+                "C": "Developer",
+                "D": "All of the above are correct"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 26: **[[/DOCX_COLOR]]**Who finds and records software faults, defects, or bugs as their primary responsibility?**",
+              "explanation": "",
+              "options": {
+                "A": "Tester",
+                "B": "Customer",
+                "C": "Developer",
+                "D": "All of the above are correct"
+              }
+            }
+          }
+        },
+        {
+          "id": "27",
+          "number": 27,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "A",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 27: **[[/DOCX_COLOR]]**Defect Removal Effectiveness: If the number of defects in the current phase (for example, design) is 30 and the Filtering Effectiveness (FE) of the SQA activity in that phase (for example, a design inspection) is 60%, how many defects will be removed and how many will remain and move to the next software development phase?**",
+              "explanation": "",
+              "options": {
+                "A": "18; 12",
+                "B": "12; 18",
+                "C": "20; 10",
+                "D": "10; 20"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 27: **[[/DOCX_COLOR]]**Defect Removal Effectiveness: If the number of defects in the current phase (for example, design) is 30 and the Filtering Effectiveness (FE) of the SQA activity in that phase (for example, a design inspection) is 60%, how many defects will be removed and how many will remain and move to the next software development phase?**",
+              "explanation": "",
+              "options": {
+                "A": "18; 12",
+                "B": "12; 18",
+                "C": "20; 10",
+                "D": "10; 20"
+              }
+            }
+          }
+        },
+        {
+          "id": "28",
+          "number": 28,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 28: **[[/DOCX_COLOR]]**Which of the following types of testing is likely to benefit most from test tools that provide facilities for collecting test results and rerunning tests?**",
+              "explanation": "",
+              "options": {
+                "A": "Integration testing",
+                "B": "Regression testing",
+                "C": "User acceptance testing",
+                "D": "System testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 28: **[[/DOCX_COLOR]]**Which of the following types of testing is likely to benefit most from test tools that provide facilities for collecting test results and rerunning tests?**",
+              "explanation": "",
+              "options": {
+                "A": "Integration testing",
+                "B": "Regression testing",
+                "C": "User acceptance testing",
+                "D": "System testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "29",
+          "number": 29,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 29: **[[/DOCX_COLOR]]**Black-box testing techniques include:**",
+              "explanation": "",
+              "options": {
+                "A": "Condition coverage and multiple-condition decision coverage",
+                "B": "Equivalence partitioning, boundary value analysis, decision tables, state transition diagrams, and error guessing",
+                "C": "Loop coverage and basis path coverage",
+                "D": "Statement coverage and branch coverage"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 29: **[[/DOCX_COLOR]]**Black-box testing techniques include:**",
+              "explanation": "",
+              "options": {
+                "A": "Condition coverage and multiple-condition decision coverage",
+                "B": "Equivalence partitioning, boundary value analysis, decision tables, state transition diagrams, and error guessing",
+                "C": "Loop coverage and basis path coverage",
+                "D": "Statement coverage and branch coverage"
+              }
+            }
+          }
+        },
+        {
+          "id": "30",
+          "number": 30,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "During the testing of a module, tester 'X' found a defect and asked the developer to fix it. However, the developer rejected the request and said that it was not a defect. What should tester 'X' do?",
+              "explanation": "",
+              "options": {
+                "A": "Fix the defect personally",
+                "B": "All of the above are correct",
+                "C": "Do nothing",
+                "D": "Send the developer detailed information about the encountered defect and verify that the defect can be reproduced"
+              }
+            },
+            "en": {
+              "question": "During the testing of a module, tester 'X' found a defect and asked the developer to fix it. However, the developer rejected the request and said that it was not a defect. What should tester 'X' do?",
+              "explanation": "",
+              "options": {
+                "A": "Fix the defect personally",
+                "B": "All of the above are correct",
+                "C": "Do nothing",
+                "D": "Send the developer detailed information about the encountered defect and verify that the defect can be reproduced"
+              }
+            }
+          }
+        },
+        {
+          "id": "31",
+          "number": 31,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "A",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 31: **[[/DOCX_COLOR]]**Which testing levels are commonly used in the V-model?**",
+              "explanation": "",
+              "options": {
+                "A": "Unit testing, integration testing, system testing, and acceptance testing",
+                "B": "Integration testing, system testing, acceptance testing, and regression testing",
+                "C": "Alpha testing, Beta testing, black-box testing, and white-box testing",
+                "D": "Incremental testing, Big Bang testing, and data-driven testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 31: **[[/DOCX_COLOR]]**Which testing levels are commonly used in the V-model?**",
+              "explanation": "",
+              "options": {
+                "A": "Unit testing, integration testing, system testing, and acceptance testing",
+                "B": "Integration testing, system testing, acceptance testing, and regression testing",
+                "C": "Alpha testing, Beta testing, black-box testing, and white-box testing",
+                "D": "Incremental testing, Big Bang testing, and data-driven testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "32",
+          "number": 32,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 32: **[[/DOCX_COLOR]]**What is the difference between black-box testing and white-box testing?**",
+              "explanation": "",
+              "options": {
+                "A": "Black-box testing has broader statement coverage than white-box testing",
+                "B": "Black-box testing is functional testing; white-box testing is structural testing",
+                "C": "Black-box testing can be performed only after white-box testing",
+                "D": "Black-box testing is functional testing; white-box testing is non-functional testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 32: **[[/DOCX_COLOR]]**What is the difference between black-box testing and white-box testing?**",
+              "explanation": "",
+              "options": {
+                "A": "Black-box testing has broader statement coverage than white-box testing",
+                "B": "Black-box testing is functional testing; white-box testing is structural testing",
+                "C": "Black-box testing can be performed only after white-box testing",
+                "D": "Black-box testing is functional testing; white-box testing is non-functional testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "33",
+          "number": 33,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "B",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 33: **[[/DOCX_COLOR]]**...... is a form of testing in which the tester does not need to know how a component or system operates, its source code, or its internal data processing. The tester enters input data and checks whether the returned result is as expected.**",
+              "explanation": "",
+              "options": {
+                "A": "Integration testing",
+                "B": "Black-box testing",
+                "C": "Unit testing",
+                "D": "White-box testing"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 33: **[[/DOCX_COLOR]]**...... is a form of testing in which the tester does not need to know how a component or system operates, its source code, or its internal data processing. The tester enters input data and checks whether the returned result is as expected.**",
+              "explanation": "",
+              "options": {
+                "A": "Integration testing",
+                "B": "Black-box testing",
+                "C": "Unit testing",
+                "D": "White-box testing"
+              }
+            }
+          }
+        },
+        {
+          "id": "34",
+          "number": 34,
+          "type": "single_choice",
+          "topic": "",
+          "difficulty": "",
+          "correctAnswer": "D",
+          "content": {
+            "vi": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 34: **[[/DOCX_COLOR]]**Which McCall software quality factor is used to satisfy the following requirement? The Class Semester Grade Summary used by an academic adviser must present complete and up-to-date information for each student. The information includes all courses taken during the semester, the grade for each course, the number of credits completed during the semester, the semester grade-point average, the cumulative grade-point average, the academic-year grade-point average, and the conduct score.**",
+              "explanation": "",
+              "options": {
+                "A": "Reliability",
+                "B": "Integrity",
+                "C": "Efficiency",
+                "D": "Correctness"
+              }
+            },
+            "en": {
+              "question": "[[DOCX_COLOR:1F4E79]]**Question 34: **[[/DOCX_COLOR]]**Which McCall software quality factor is used to satisfy the following requirement? The Class Semester Grade Summary used by an academic adviser must present complete and up-to-date information for each student. The information includes all courses taken during the semester, the grade for each course, the number of credits completed during the semester, the semester grade-point average, the cumulative grade-point average, the academic-year grade-point average, and the conduct score.**",
+              "explanation": "",
+              "options": {
+                "A": "Reliability",
+                "B": "Integrity",
+                "C": "Efficiency",
+                "D": "Correctness"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "attemptHistory": []
+}

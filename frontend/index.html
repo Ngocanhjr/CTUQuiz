@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Exam Studio</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=20260803-11" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar paper">
+        <div>
+          <h1>Quiz Exam Studio</h1>
+          <p class="topbar__subtitle" data-i18n="appSubtitle">
+            Quản lý ngân hàng câu hỏi và tạo bài thi thử trực tuyến
+          </p>
+        </div>
+        <div class="topbar__actions">
+          <button
+            id="clearStorageBtn"
+            class="btn topbar__clear-btn"
+            type="button"
+            data-i18n="clearStorage"
+          >
+            Xóa dữ liệu
+          </button>
+          <label class="language-switch">
+            <span data-i18n="languageLabel">Ngôn ngữ</span>
+            <select id="languageSelect" aria-label="Language">
+              <option value="vi">Tiếng Việt</option>
+              <option value="en">English</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <section id="homeScreen" class="home-screen paper">
+        <div class="home-screen__content">
+          <p class="topbar__eyebrow" data-i18n="homeKicker">Hướng dẫn nhanh</p>
+          <!-- <h2 data-i18n="homeTitle">
+            Hướng dẫn sử dụng nhanh
+          </h2> -->
+
+          <div class="home-screen__meta">
+            <div class="meta-card">
+              <span data-i18n="questionBank">Ngân hàng câu hỏi</span>
+              <strong id="questionCount">40</strong>
+            </div>
+            <div class="meta-card">
+              <span data-i18n="currentBank">Bộ câu hỏi hiện tại</span>
+              <strong id="bankSourceLabel">Bộ mẫu HTML</strong>
+            </div>
+            <div class="meta-card">
+              <span data-i18n="activeModes">Chế độ</span>
+              <strong>Thi / Luyện tập</strong>
+            </div>
+          </div>
+        </div>
+        <div class="home-screen__actions">
+          <div class="mode-panel mode-panel--session">
+            <label
+              id="modeSetupField"
+              class="mode-panel__mode-field"
+              for="modeSetupSelect"
+            >
+              <span class="mode-panel__label" data-i18n="modeSelectionLabel"
+                >Chọn chế độ</span
+              >
+              <select id="modeSetupSelect" class="mode-panel__select">
+                <option value="exam" data-i18n="examTag">Thi thử</option>
+                <option value="practice" data-i18n="practiceTag">
+                  Luyện tập
+                </option>
+              </select>
+            </label>
+            <div id="examModeSettings" class="mode-panel__settings">
+              <span class="mode-panel__tag" data-i18n="examTag">Thi thử</span>
+              <!-- <h3 data-i18n="examModeTitle">Chế độ Thi</h3> -->
+              <!-- <p data-i18n="examModeText">
+              Làm bài, lưu đáp án, nộp bài và xem review theo kiểu giao diện
+              Moodle/CTU.
+            </p> -->
+              <div class="mode-panel__field">
+                <span class="mode-panel__label" data-i18n="examDurationLabel"
+                  >Thời gian làm bài</span
+                >
+                <div class="mode-panel__input-wrap">
+                  <input
+                    id="examDurationInput"
+                    class="mode-panel__input"
+                    type="number"
+                    min="1"
+                    max="300"
+                    step="1"
+                    value="20"
+                  />
+                  <span class="mode-panel__suffix" data-i18n="minuteUnit"
+                    >phút</span
+                  >
+                </div>
+                <p class="mode-panel__hint" data-i18n="examDurationHint">
+                  Áp dụng cho mỗi phiên thi thử mới.
+                </p>
+              </div>
+              <label
+                class="mode-panel__checkbox"
+                for="examShuffleQuestionsInput"
+              >
+                <input id="examShuffleQuestionsInput" type="checkbox" />
+                <span data-i18n="examShuffleQuestions"
+                  >Trộn thứ tự câu hỏi</span
+                >
+              </label>
+              <label class="mode-panel__checkbox" for="examShuffleAnswersInput">
+                <input id="examShuffleAnswersInput" type="checkbox" />
+                <span data-i18n="examShuffleAnswers">Trộn thứ tự đáp án</span>
+              </label>
+              <label class="mode-panel__checkbox" for="examHideTopicInput">
+                <input id="examHideTopicInput" type="checkbox" />
+                <span data-i18n="examHideTopic">Ẩn tiêu đề nhóm</span>
+              </label>
+              <button
+                id="startExamBtn"
+                class="btn btn--primary"
+                type="button"
+                data-i18n="startExam"
+              >
+                Bắt đầu thi
+              </button>
+            </div>
+            <div id="practiceModeSettings" class="mode-panel__settings hidden">
+              <span class="mode-panel__tag" data-i18n="practiceTag"
+                >Luyện tập</span
+              >
+              <!-- <h3 data-i18n="practiceModeTitle">Chế độ Luyện tập</h3> -->
+              <p data-i18n="practiceModeText">
+                Trả lời từng câu và xem ngay trạng thái đúng/sai, đáp án đúng và
+                lời giải.
+              </p>
+              <div class="mode-panel__field">
+                <span
+                  class="mode-panel__label"
+                  data-i18n="practiceDurationLabel"
+                  >Thời gian luyện tập</span
+                >
+                <div class="mode-panel__input-wrap">
+                  <input
+                    id="practiceDurationInput"
+                    class="mode-panel__input"
+                    type="number"
+                    min="1"
+                    max="300"
+                    step="1"
+                    value="20"
+                  />
+                  <span class="mode-panel__suffix" data-i18n="minuteUnit"
+                    >phút</span
+                  >
+                </div>
+                <p class="mode-panel__hint" data-i18n="practiceDurationHint">
+                  Áp dụng cho mỗi phiên luyện tập mới.
+                </p>
+              </div>
+              <label
+                class="mode-panel__checkbox"
+                for="practiceShuffleQuestionsInput"
+              >
+                <input id="practiceShuffleQuestionsInput" type="checkbox" />
+                <span data-i18n="practiceShuffleQuestions"
+                  >Trộn thứ tự câu hỏi</span
+                >
+              </label>
+              <label
+                class="mode-panel__checkbox"
+                for="practiceShuffleAnswersInput"
+              >
+                <input id="practiceShuffleAnswersInput" type="checkbox" />
+                <span data-i18n="practiceShuffleAnswers"
+                  >Trộn thứ tự đáp án</span
+                >
+              </label>
+              <label class="mode-panel__checkbox" for="practiceHideTopicInput">
+                <input id="practiceHideTopicInput" type="checkbox" />
+                <span data-i18n="practiceHideTopic">Ẩn tiêu đề nhóm</span>
+              </label>
+              <button
+                id="startPracticeBtn"
+                class="btn btn--secondary"
+                type="button"
+                data-i18n="startPractice"
+              >
+                Bắt đầu luyện
+              </button>
+            </div>
+          </div>
+          <div class="mode-panel mode-panel--import">
+            <span class="mode-panel__tag" data-i18n="importTag"
+              >Import DOCX</span
+            >
+            <!-- <h3 data-i18n="importTitle">Thêm bộ câu hỏi mới</h3> -->
+            <!-- <p data-i18n="importText">
+              Nhập file .docx theo 4 mẫu: bảng Field/Value, Word đánh số có tô
+              đáp án, bảng ma trận nhiều dòng, hoặc block Câu/Đáp án.
+            </p> -->
+            <label class="file-input" for="importFileInput">
+              <input
+                id="importFileInput"
+                type="file"
+                accept=".docx,.DOCX,.doc,.DOC"
+              />
+              <span class="file-input__button" data-i18n="chooseFile"
+                >Chọn tệp</span
+              >
+              <span id="importFileName">Chưa chọn tệp</span>
+            </label>
+            <label
+              class="mode-panel__checkbox"
+              for="importKeepChapterTopicsInput"
+            >
+              <input id="importKeepChapterTopicsInput" type="checkbox" />
+              <span data-i18n="importKeepChapterTopics">
+                Giữ tiêu đề Chapter làm topic
+              </span>
+            </label>
+            <div class="mode-panel__actions">
+              <button
+                id="importReplaceBtn"
+                class="btn btn--primary"
+                type="button"
+                data-i18n="importButton"
+              >
+                Nhập bộ câu hỏi
+              </button>
+              <button
+                id="restoreSampleBtn"
+                class="btn btn--ghost"
+                type="button"
+                data-i18n="restoreSample"
+              >
+                Dùng bộ mẫu
+              </button>
+            </div>
+            <p
+              id="importStatus"
+              class="import-status"
+              data-state="idle"
+              data-i18n="importIdle"
+            >
+              Chưa có file được nhập.
+            </p>
+          </div>
+          <div class="mode-panel mode-panel--bank bank-panel">
+            <h3 data-i18n="questionBankManagementTitle">Quản lý bộ câu hỏi</h3>
+            <div class="bank-panel__row">
+              <span data-i18n="questionBank">Ngân hàng câu hỏi</span>
+              <strong id="bankCountLabel">40</strong>
+            </div>
+            <div class="bank-panel__row">
+              <span data-i18n="supportedFormat">Định dạng hỗ trợ</span>
+              <strong>.docx</strong>
+            </div>
+            <div class="bank-panel__row bank-panel__row--selector">
+              <span data-i18n="savedTestsLabel">Bộ test đã lưu</span>
+              <select
+                id="bankSelector"
+                class="bank-panel__select"
+                aria-label="Saved tests"
+              ></select>
+            </div>
+            <div class="mode-panel__actions mode-panel__actions--compact">
+              <button
+                id="applyBankBtn"
+                class="btn btn--apply"
+                type="button"
+                data-i18n="useSelectedTest"
+              >
+                Dùng bộ đã chọn
+              </button>
+              <button
+                id="deleteBankBtn"
+                class="btn btn--delete"
+                type="button"
+                data-i18n="deleteSelectedTest"
+              >
+                Xóa bộ đã chọn
+              </button>
+            </div>
+          </div>
+          <div class="mode-panel mode-panel--history history-panel">
+            <span class="mode-panel__tag" data-i18n="attemptHistoryTitle">
+              Lịch sử làm bài
+            </span>
+            <ul id="attemptHistoryList" class="attempt-history"></ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="quick-nav quick-nav--top" aria-label="Sidebar controls">
+        <button
+          id="globalSidebarToggleBtn"
+          class="quick-nav__btn quick-nav__btn--toggle"
+          type="button"
+          data-sidebar-toggle
+          data-i18n="hideSidebar"
+          aria-label="Ẩn thanh bên"
+          title="Ẩn thanh bên"
+        >
+          ›
+        </button>
+      </div>
+
+      <section id="quizWorkspace" class="attempt-layout hidden">
+        <div class="attempt-main">
+          <div class="attempt-toolbar">
+            <button
+              id="attemptBackBtn"
+              class="btn btn--primary attempt-toolbar__back"
+              type="button"
+              data-i18n="backToHomeShort"
+            >
+              Quay lại
+            </button>
+          </div>
+          <div id="questionHost" class="question-host"></div>
+          <div id="questionNavControls" class="submitbtns paper">
+            <button
+              id="prevBtn"
+              class="btn btn--ghost"
+              type="button"
+              data-i18n="previousQuestion"
+            >
+              Trang trước
+            </button>
+            <button
+              id="nextBtn"
+              class="btn btn--primary"
+              type="button"
+              data-i18n="nextQuestion"
+            >
+              Trang tiếp
+            </button>
+          </div>
+        </div>
+
+        <aside id="mod_quiz_navblock" class="attempt-sidebar paper">
+          <div class="nav-summary">
+            <div class="nav-summary__item">
+              <span data-i18n="modeLabel">Chế độ</span>
+              <strong id="modeBadge">Thi thử</strong>
+            </div>
+            <div class="nav-summary__item">
+              <span data-i18n="navigationModeLabel">Điều hướng</span>
+              <select
+                id="navigationModeSelect"
+                class="nav-summary__select"
+                aria-label="Navigation mode"
+              >
+                <option value="paged" data-i18n="navigationModePaged">
+                  Từng câu
+                </option>
+                <option value="chunk5" data-i18n="navigationModeChunk5">
+                  5 câu
+                </option>
+                <option value="chunk10" data-i18n="navigationModeChunk10">
+                  10 câu
+                </option>
+                <option value="scroll" data-i18n="navigationModeScroll">
+                  Cuộn dọc
+                </option>
+              </select>
+            </div>
+            <div class="nav-summary__item">
+              <span data-i18n="timer">Thời gian</span>
+              <strong id="timerValue">20:00</strong>
+            </div>
+            <div class="nav-summary__item">
+              <span data-i18n="progress">Tiến độ</span>
+              <strong id="progressValue">1 / 40</strong>
+              <div class="nav-progress" aria-hidden="true">
+                <span id="progressMeter"></span>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar-map">
+            <h2 class="sidebar-title" data-i18n="questionMap">Số câu</h2>
+            <div
+              id="questionPalette"
+              class="qn_buttons clearfix multipages"
+            ></div>
+            <div class="palette-legend" aria-label="Question status legend">
+              <span>
+                <i class="palette-legend__dot palette-legend__dot--saved"></i>
+                <span data-i18n="stateSaved">Câu trả lời đã được lưu</span>
+              </span>
+              <span>
+                <i class="palette-legend__dot palette-legend__dot--blank"></i>
+                <span data-i18n="stateBlank">Chưa trả lời</span>
+              </span>
+            </div>
+            <div class="othernav">
+              <button
+                id="submitBtn"
+                class="btn btn--primary"
+                type="button"
+                data-i18n="submitExam"
+              >
+                Hoàn thành bài thi
+              </button>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="resultWorkspace" class="attempt-layout hidden">
+        <div class="attempt-main">
+          <div class="attempt-toolbar attempt-toolbar--result">
+            <button
+              id="resultBackBtn"
+              class="btn btn--primary attempt-toolbar__back"
+              type="button"
+              data-i18n="backToHomeShort"
+            >
+              Quay lại
+            </button>
+          </div>
+          <article class="paper result-summary">
+            <div class="result-summary__header">
+              <div>
+                <p class="topbar__eyebrow" data-i18n="resultKicker">
+                  Xem lại đáp án
+                </p>
+                <h2 data-i18n="resultTitle">Kết quả bài làm</h2>
+              </div>
+              <div class="result-actions">
+                <button
+                  id="retryWrongBtn"
+                  class="btn btn--secondary"
+                  type="button"
+                  data-i18n="retryWrong"
+                >
+                  Luyện lại câu sai
+                </button>
+                <button
+                  id="restartBtn"
+                  class="btn btn--ghost"
+                  type="button"
+                  data-i18n="backHome"
+                >
+                  Về trang chọn chế độ
+                </button>
+              </div>
+            </div>
+            <div class="result-metrics">
+              <div class="meta-card">
+                <span data-i18n="score">Điểm</span
+                ><strong id="scoreValue">0%</strong>
+              </div>
+              <div class="meta-card">
+                <span data-i18n="correctAnswers">Đúng</span
+                ><strong id="correctValue">0</strong>
+              </div>
+              <div class="meta-card">
+                <span data-i18n="wrongAnswers">Sai</span
+                ><strong id="wrongValue">0</strong>
+              </div>
+              <div class="meta-card">
+                <span data-i18n="unanswered">Bỏ trống</span
+                ><strong id="blankValue">0</strong>
+              </div>
+            </div>
+            <div id="resultFilters" class="result-filters">
+              <span class="result-filters__label" data-i18n="resultFilterLabel"
+                >Lọc câu</span
+              >
+              <button
+                type="button"
+                class="result-filters__btn is-active"
+                data-result-filter="all"
+                data-i18n="resultFilterAll"
+              >
+                Tất cả
+              </button>
+              <button
+                type="button"
+                class="result-filters__btn"
+                data-result-filter="correct"
+                data-i18n="resultFilterCorrect"
+              >
+                Đúng
+              </button>
+              <button
+                type="button"
+                class="result-filters__btn"
+                data-result-filter="wrong"
+                data-i18n="resultFilterWrong"
+              >
+                Sai
+              </button>
+              <button
+                type="button"
+                class="result-filters__btn"
+                data-result-filter="blank"
+                data-i18n="resultFilterBlank"
+              >
+                Chưa chọn
+              </button>
+            </div>
+          </article>
+          <div id="reviewList" class="review-list"></div>
+        </div>
+
+        <aside class="attempt-sidebar paper">
+          <div class="nav-summary nav-summary--result">
+            <div class="nav-summary__item">
+              <span data-i18n="reviewNavigator">Điều hướng review</span>
+              <strong data-i18n="resultTitle">Kết quả bài làm</strong>
+            </div>
+          </div>
+          <div class="sidebar-map">
+            <h2 class="sidebar-title" data-i18n="questionMap">Số câu</h2>
+            <div
+              id="reviewPalette"
+              class="qn_buttons clearfix multipages"
+            ></div>
+            <div class="palette-legend" aria-label="Review status legend">
+              <span>
+                <i class="palette-legend__dot palette-legend__dot--correct"></i>
+                <span data-i18n="stateCorrect">Đúng</span>
+              </span>
+              <span>
+                <i
+                  class="palette-legend__dot palette-legend__dot--incorrect"
+                ></i>
+                <span data-i18n="stateIncorrect">Sai</span>
+              </span>
+              <span>
+                <i class="palette-legend__dot palette-legend__dot--blank"></i>
+                <span data-i18n="stateBlank">Chưa trả lời</span>
+              </span>
+            </div>
+            <div class="othernav othernav--stacked">
+              <button
+                id="reviewRetryWrongBtn"
+                class="btn btn--secondary"
+                type="button"
+                data-i18n="retryWrong"
+              >
+                Luyện lại câu sai
+              </button>
+              <button
+                id="reviewRestartBtn"
+                class="btn btn--ghost"
+                type="button"
+                data-i18n="finishReview"
+              >
+                Kết thúc xem lại
+              </button>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <div class="quick-nav" aria-label="Quick page navigation">
+      <button
+        id="resetAppBtn"
+        class="quick-nav__btn quick-nav__btn--home"
+        type="button"
+        aria-label="Tạo phiên mới"
+        title="Tạo phiên mới"
+      >
+        ⌂
+      </button>
+      <button
+        id="scrollTopBtn"
+        class="quick-nav__btn"
+        type="button"
+        title="Lên đầu trang"
+      >
+        ↑
+      </button>
+      <button
+        id="scrollBottomBtn"
+        class="quick-nav__btn"
+        type="button"
+        title="Xuống cuối trang"
+      >
+        ↓
+      </button>
+    </div>
+
+    <script src="data/questions.js"></script>
+    <script src="assets/js/app.js?v=20260803-7"></script>
+  </body>
+</html>
