@@ -4,6 +4,10 @@
   "private": true,
   "description": "Quiz Exam Studio with separated frontend and backend structure.",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  },
+  "engines": {
+    "node": ">=20 <25"
   }
 }
