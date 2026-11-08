@@ -90,6 +90,13 @@ Hệ thống hỗ trợ các nhãn tương đương:
 
 - `single_choice`
 - `true_false`
+- `multiple_choice`
+
+Với câu nhiều đáp án, dùng `Đáp án đúng: a, b, c` (hoặc `Correct Answer: A, B, C`). Hệ thống tự nhận dạng câu nhiều lựa chọn, hiển thị checkbox và chỉ chấm đúng khi chọn đủ, không chọn thừa.
+
+Với câu True/False, có thể dùng chữ cái (`Đáp án: A`), nội dung (`Đáp án: True`) hoặc cả hai (`Đáp án đúng: True (a)`). Khi có cả nội dung và chữ cái, hai phần phải khớp nhau.
+
+Nhận tương tự với lựa chọn tiếng Việt `Đúng` / `Sai` và đáp án `Đúng (a)` / `Sai (b)`.
 
 ## Định dạng code trong DOCX
 

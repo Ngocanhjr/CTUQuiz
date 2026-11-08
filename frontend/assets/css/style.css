@@ -1270,7 +1270,7 @@ a:focus-visible {
   background: #f4f8fd;
 }
 
-.que .answer input[type="radio"] {
+.que .answer input:is([type="radio"], [type="checkbox"]) {
   margin-top: 3px;
   flex: none;
   width: 17px;
@@ -2169,7 +2169,7 @@ body.is-result-mode .quick-nav--top {
   background: #f5f7f9;
 }
 
-.que .answer input[type="radio"] {
+.que .answer input:is([type="radio"], [type="checkbox"]) {
   flex: none;
   width: 14px;
   height: 14px;
@@ -2792,8 +2792,8 @@ body.is-result-mode .que .answer div.r1 {
   color: #002b3f;
 }
 
-body.is-attempt-mode .que .answer input[type="radio"],
-body.is-result-mode .que .answer input[type="radio"] {
+body.is-attempt-mode .que .answer input:is([type="radio"], [type="checkbox"]),
+body.is-result-mode .que .answer input:is([type="radio"], [type="checkbox"]) {
   accent-color: #eba600;
 }
 

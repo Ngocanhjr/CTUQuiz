@@ -64,7 +64,9 @@ function normalizeOptionMap(optionMap) {
 }
 
 function inferQuestionType(options) {
-  const texts = Object.values(options).map(normalizeComparableText);
+  const texts = Object.values(options).map((value) =>
+    normalizeComparableText(value).replaceAll("đ", "d"),
+  );
   if (
     texts.length === 2 &&
     ((texts.includes("true") && texts.includes("false")) ||
@@ -92,6 +94,12 @@ function createLocaleContent(block, fallback) {
   };
 }
 
+function normalizeAnswerSelection(value) {
+  const letters = String(value || "").toUpperCase().split(",")
+    .map((letter) => letter.trim()).filter(Boolean);
+  return [...new Set(letters)].sort().join(",");
+}
+
 function normalizeQuestion(rawQuestion, index) {
   const defaultOptions = normalizeOptionMap(rawQuestion.options || {});
   const defaultBlock = {
@@ -111,12 +119,12 @@ function normalizeQuestion(rawQuestion, index) {
   return {
     id: String(rawQuestion.id ?? rawQuestion.number ?? index + 1),
     number: Number(rawQuestion.number ?? index + 1),
-    type: rawQuestion.type || inferQuestionType(mergedOptions),
+    type: String(rawQuestion.correctAnswer || "").includes(",")
+      ? "multiple_choice"
+      : rawQuestion.type || inferQuestionType(mergedOptions),
     topic: toText(rawQuestion.topic),
     difficulty: toText(rawQuestion.difficulty),
-    correctAnswer: String(rawQuestion.correctAnswer || "")
-      .trim()
-      .toUpperCase(),
+    correctAnswer: normalizeAnswerSelection(rawQuestion.correctAnswer),
     content: {
       vi: {
         question: vi.question || en.question,
@@ -171,9 +179,7 @@ function normalizeAttemptHistoryItem(item, index) {
   const details = Array.isArray(item.details)
     ? item.details.map((detail, detailIndex) => {
         const normalizedQuestion = normalizeQuestion(detail, detailIndex);
-        const selected = String(detail.selected || "")
-          .trim()
-          .toUpperCase();
+        const selected = normalizeAnswerSelection(detail.selected);
         const isBlank = selected === "";
         const isCorrect =
           !isBlank && selected === normalizedQuestion.correctAnswer;
@@ -252,6 +258,14 @@ function migrateLegacyState(raw) {
   }
 
   if (
+    raw.version === 2 &&
+    Array.isArray(raw.uploadedBanks) &&
+    Array.isArray(raw.attemptHistory)
+  ) {
+    return raw;
+  }
+
+  if (
     Array.isArray(raw.uploadedBanks) ||
     Array.isArray(raw.attemptHistory) ||
     Object.prototype.hasOwnProperty.call(raw, "currentBankId")
@@ -291,14 +305,9 @@ function readStoredState() {
 }
 
 function writeStoredState(state) {
-  const normalizedState = normalizeAppState(state);
   ensureStorageDirectory();
-  fs.writeFileSync(
-    STORAGE_PATH,
-    JSON.stringify(normalizedState, null, 2),
-    "utf8",
-  );
-  return normalizedState;
+  fs.writeFileSync(STORAGE_PATH, JSON.stringify(state), "utf8");
+  return state;
 }
 
 function getCurrentState() {

@@ -23,6 +23,8 @@
 
 ## Import DOCX (trạng thái hiện tại)
 
+Hỗ trợ đáp án có chú thích như `True (a)`, `False (b)` và nhiều đáp án như `a, b, c`. Câu nhiều đáp án dùng checkbox, chấm đúng khi chọn đủ và không chọn thừa; giữ đủ đáp án khi xáo trộn và lưu lịch sử.
+
 Parser hiện hỗ trợ các mẫu phổ biến sau:
 
 - Bảng Field/Value (mỗi câu là một block trường).

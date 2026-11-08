@@ -24,7 +24,9 @@ const PRACTICE_SHUFFLE_QUESTIONS_KEY =
 const PRACTICE_SHUFFLE_ANSWERS_KEY =
   "quiz_exam_studio.practice_shuffle_answers.v1";
 const PRACTICE_HIDE_TOPIC_KEY = "quiz_exam_studio.practice_hide_topic.v1";
-const SUPPORTED_IMPORT_TYPES = new Set(["single_choice", "true_false"]);
+const SUPPORTED_IMPORT_TYPES = new Set([
+  "single_choice", "true_false", "multiple_choice",
+]);
 const DOCX_IMAGE_TOKEN_PREFIX = "[[DOCX_IMAGE:";
 const DOCX_IMAGE_TOKEN_SUFFIX = "]]";
 const DOCX_CODE_LINE_TOKEN_PREFIX = "[[DOCX_CODE_LINE]]";
@@ -90,7 +92,7 @@ const TEXT = {
     noFileSelected: "Chưa chọn tệp",
     importTitle: "Thêm bộ câu hỏi mới",
     importText:
-      "Nhập file .docx theo 4 mẫu: bảng Field/Value, Word đánh số có tô đáp án, bảng ma trận nhiều dòng, hoặc block Câu/Đáp án.",
+      "Nhập file .docx theo 4 mẫu: bảng Field/Value, Word đánh số có tô đáp án, bảng ma trận nhiều dòng, hoặc block Câu/Đáp án. Nhận đáp án True (a), False (b) và nhiều đáp án a, b, c.",
     examShuffleQuestions: "Trộn thứ tự câu hỏi",
     examShuffleAnswers: "Trộn thứ tự đáp án",
     examHideTopic: "Ẩn tiêu đề nhóm",
@@ -139,6 +141,7 @@ const TEXT = {
     unflagQuestion: "Xóa cờ",
     questionLabel: "Câu hỏi",
     promptSelectOne: "Chọn một:",
+    promptSelectMany: "Chọn tất cả đáp án đúng:",
     stateSaved: "Câu trả lời đã được lưu",
     stateBlank: "Chưa trả lời",
     stateCorrect: "Đúng",
@@ -233,7 +236,7 @@ const TEXT = {
     noFileSelected: "No file selected.",
     importTitle: "Add a new question bank",
     importText:
-      "Import a .docx file from 4 templates: field/value table, numbered quiz with highlighted answers, matrix table, or tagged Question/Answer blocks.",
+      "Import a .docx file from 4 templates: field/value table, numbered quiz with highlighted answers, matrix table, or tagged Question/Answer blocks. Supports True (a), False (b), and multiple answers a, b, c.",
     examShuffleQuestions: "Shuffle question order",
     examShuffleAnswers: "Shuffle answer order",
     examHideTopic: "Hide group headings",
@@ -282,6 +285,7 @@ const TEXT = {
     unflagQuestion: "Unflag question",
     questionLabel: "Question",
     promptSelectOne: "Select one:",
+    promptSelectMany: "Select all correct answers:",
     stateSaved: "Answer saved",
     stateBlank: "Not answered",
     stateCorrect: "Correct",
@@ -632,7 +636,10 @@ function isLikelyCodeLine(value) {
     return true;
   }
 
-  if (/^[\s\t]+/.test(rawText) && /[{};=<>()[\].:#]/.test(text)) {
+  if (
+    /^[\s\t]+/.test(rawText) &&
+    (/[{}=<>[\]]/.test(text) || /;\s*$/.test(text))
+  ) {
     return true;
   }
 
@@ -887,7 +894,9 @@ function normalizeOptionMap(optionMap) {
 }
 
 function inferQuestionType(options) {
-  const texts = Object.values(options).map(normalizeComparableText);
+  const texts = Object.values(options).map((value) =>
+    normalizeComparableText(value).replaceAll("đ", "d"),
+  );
   if (
     texts.length === 2 &&
     ((texts.includes("true") && texts.includes("false")) ||
@@ -1022,6 +1031,12 @@ function stripDocxAppendixSuffix(value) {
   return cutIndex >= 0 ? text.slice(0, cutIndex).trim() : text;
 }
 
+function normalizeAnswerSelection(value) {
+  const letters = String(value || "").toUpperCase().split(",")
+    .map((letter) => letter.trim()).filter(Boolean);
+  return [...new Set(letters)].sort().join(",");
+}
+
 function normalizeQuestion(rawQuestion, index) {
   const resolvedNumber = Number(rawQuestion.number ?? index + 1);
   const defaultOptions = normalizeOptionMap(rawQuestion.options || {});
@@ -1051,12 +1066,12 @@ function normalizeQuestion(rawQuestion, index) {
   return {
     id: String(rawQuestion.id ?? rawQuestion.number ?? index + 1),
     number: resolvedNumber,
-    type: rawQuestion.type || inferQuestionType(mergedOptions),
+    type: String(rawQuestion.correctAnswer || "").includes(",")
+      ? "multiple_choice"
+      : rawQuestion.type || inferQuestionType(mergedOptions),
     topic: toText(rawQuestion.topic),
     difficulty: toText(rawQuestion.difficulty),
-    correctAnswer: String(rawQuestion.correctAnswer || "")
-      .trim()
-      .toUpperCase(),
+    correctAnswer: normalizeAnswerSelection(rawQuestion.correctAnswer),
     content: {
       vi: {
         question: viQuestion,
@@ -1324,9 +1339,7 @@ function normalizeAttemptHistoryItem(item) {
   const details = Array.isArray(item?.details)
     ? item.details.map((detail, index) => {
         const normalizedQuestion = normalizeQuestion(detail, index);
-        const selected = String(detail?.selected || "")
-          .trim()
-          .toUpperCase();
+        const selected = normalizeAnswerSelection(detail?.selected);
         const isBlank = selected === "";
         const isCorrect =
           !isBlank && selected === normalizedQuestion.correctAnswer;
@@ -1986,15 +1999,18 @@ function prepareLandingReveal() {
 
 async function bootstrap() {
   const revealLanding = prepareLandingReveal();
-  applyQuestionBank(await loadQuestionBank());
   const storedState = loadStoredAppState();
+  applyQuestionBank(
+    resolveStoredBankById(storedState, storedState.currentBankId) ||
+      loadStoredBank() ||
+      getSampleBank(),
+  );
   state.questionBanks = [getSampleBank(), ...storedState.uploadedBanks];
   state.attemptHistory = storedState.attemptHistory.filter(
     (item) => item.bankId === (state.questionBank?.id || ""),
   );
   renderBankSelector();
   renderAttemptHistory();
-  await refreshHomeTrackingData();
   revealLanding();
 
   elements.navigationModeSelect.value = state.navigationMode;
@@ -2092,6 +2108,10 @@ async function bootstrap() {
 
   updateStaticTexts();
   updateSidebarVisibility();
+  resetToHome();
+
+  applyQuestionBank(await loadQuestionBank());
+  await refreshHomeTrackingData();
   resetToHome();
 }
 
@@ -2268,15 +2288,11 @@ function shuffleQuestionAnswerOrder(question) {
     );
   }
 
-  const normalizedCorrectAnswer = String(clonedQuestion.correctAnswer || "")
-    .trim()
-    .toUpperCase();
-  const correctAnswerIndex = shuffledSourceLetters.indexOf(
-    normalizedCorrectAnswer,
+  clonedQuestion.correctAnswer = normalizeAnswerSelection(
+    clonedQuestion.correctAnswer.split(",").map((letter) =>
+      targetLetters[shuffledSourceLetters.indexOf(letter)] || letter,
+    ).join(","),
   );
-  if (correctAnswerIndex >= 0) {
-    clonedQuestion.correctAnswer = targetLetters[correctAnswerIndex];
-  }
 
   return clonedQuestion;
 }
@@ -2491,6 +2507,8 @@ function buildScrollQuestionMarkup(question, index) {
 function buildQuestionMarkup(question, index, config) {
   const content = getLocalizedQuestionContent(question);
   const selectedAnswer = config.selectedAnswer ?? null;
+  const selectedLetters = (selectedAnswer || "").split(",");
+  const correctLetters = question.correctAnswer.split(",");
   const isCorrect = selectedAnswer === question.correctAnswer;
   const evaluationState = config.showEvaluation
     ? getEvaluationState(selectedAnswer, isCorrect)
@@ -2522,28 +2540,28 @@ function buildQuestionMarkup(question, index, config) {
         stripOptionLabelPrefix(value, letter),
       );
       const classes = [`r${optionIndex % 2}`];
-      if (selectedAnswer === letter) {
+      if (selectedLetters.includes(letter)) {
         classes.push("is-selected");
       }
-      if (config.showEvaluation && letter === question.correctAnswer) {
+      if (config.showEvaluation && correctLetters.includes(letter)) {
         classes.push("is-correct");
       }
       if (
         config.showEvaluation &&
-        selectedAnswer === letter &&
-        selectedAnswer !== question.correctAnswer
+        selectedLetters.includes(letter) &&
+        !correctLetters.includes(letter)
       ) {
         classes.push("is-wrong");
       }
 
       let icon = "";
-      if (config.showEvaluation && letter === question.correctAnswer) {
+      if (config.showEvaluation && correctLetters.includes(letter)) {
         icon =
           '<span class="answer-state-icon answer-state-icon--correct">✓</span>';
       } else if (
         config.showEvaluation &&
-        selectedAnswer === letter &&
-        selectedAnswer !== question.correctAnswer
+        selectedLetters.includes(letter) &&
+        !correctLetters.includes(letter)
       ) {
         icon =
           '<span class="answer-state-icon answer-state-icon--wrong">✕</span>';
@@ -2554,9 +2572,9 @@ function buildQuestionMarkup(question, index, config) {
           <input
             id="${answerInputId}"
             name="${questionDomId}"
-            type="radio"
+            type="${question.type === "multiple_choice" ? "checkbox" : "radio"}"
             aria-label="${escapeHtml(`${t("questionLabel")} ${index + 1}, ${letter}`)}"
-            ${selectedAnswer === letter ? "checked" : ""}
+            ${selectedLetters.includes(letter) ? "checked" : ""}
             ${config.interactive ? "" : "disabled"}
           />
           <label class="answer-label" for="${answerInputId}">
@@ -2597,7 +2615,7 @@ function buildQuestionMarkup(question, index, config) {
           ${topicMarkup}
           <div class="qtext">${safeQuestionText}</div>
           <fieldset class="ablock no-overflow visual-scroll-x">
-            <legend class="prompt">${t("promptSelectOne")}</legend>
+            <legend class="prompt">${t(question.type === "multiple_choice" ? "promptSelectMany" : "promptSelectOne")}</legend>
             <div class="answer">${answerRows}</div>
             ${clearChoiceMarkup}
           </fieldset>
@@ -2613,11 +2631,17 @@ function buildOutcomeMarkup(question, content, selectedAnswer, isCorrect) {
   if (selectedAnswer) {
     lead = isCorrect ? t("outcomeCorrect") : t("outcomeIncorrect");
   }
+  const correctOptions = question.correctAnswer.split(",").map((letter) => {
+    const text = stripBoldFormatting(
+      stripOptionLabelPrefix(content.options[letter] || "", letter),
+    );
+    return `${letter}. ${renderRichText(text)}`;
+  }).join("; ");
 
   return `
     <div class="outcome">
       <p>${lead}</p>
-      <p>${t("correctAnswerLead")} ${question.correctAnswer}. ${renderRichText(stripBoldFormatting(stripOptionLabelPrefix(content.options[question.correctAnswer] || "", question.correctAnswer)))}</p>
+      <p>${t("correctAnswerLead")} ${correctOptions}</p>
       <p>${renderRichText(content.explanation || t("noExplanation"))}</p>
     </div>
   `;
@@ -2700,7 +2724,10 @@ function handleQuestionHostClick(event) {
 
   const answerTarget = event.target.closest("[data-answer]");
   if (answerTarget) {
+    event.preventDefault();
+    const inputId = answerTarget.querySelector("input")?.id;
     selectAnswer(answerTarget.dataset.answer, questionIndex);
+    document.getElementById(inputId)?.focus({ preventScroll: true });
   }
 }
 
@@ -2736,7 +2763,16 @@ function selectAnswer(letter, questionIndex = state.currentIndex) {
     return;
   }
   state.currentIndex = questionIndex;
-  state.answers[question.id] = letter;
+  if (question.type === "multiple_choice") {
+    const selected = new Set((state.answers[question.id] || "").split(",").filter(Boolean));
+    if (selected.has(letter)) selected.delete(letter);
+    else selected.add(letter);
+    const answer = normalizeAnswerSelection([...selected].join(","));
+    if (answer) state.answers[question.id] = answer;
+    else delete state.answers[question.id];
+  } else {
+    state.answers[question.id] = letter;
+  }
 
   if (state.navigationMode === "scroll") {
     refreshQuestionCard(questionIndex);
@@ -3828,28 +3864,29 @@ function extractDocxContentLines(xmlDocument, imageMap) {
   const bodyNode = getElementsByLocalName(xmlDocument, "body")[0];
   if (!bodyNode) return [];
 
-  return Array.from(bodyNode.children).flatMap((node) => {
-    if (node.localName === "p") {
-      return extractParagraphLines(node, imageMap);
-    }
-    if (node.localName !== "tbl") return [];
+  return Array.from(bodyNode.children)
+    .flatMap((node) => {
+      if (node.localName === "p") {
+        return extractParagraphLines(node, imageMap);
+      }
+      if (node.localName !== "tbl") return [];
 
-    const rows = getDirectChildrenByLocalName(node, "tr")
-      .map((rowNode) =>
-        getDirectChildrenByLocalName(rowNode, "tc").map((cellNode) =>
-          normalizeDisplayText(extractCellText(cellNode, imageMap)),
-        ),
-      )
-      .filter((row) => row.some(Boolean));
-    if (!rows.length) return [];
+      const rows = getDirectChildrenByLocalName(node, "tr")
+        .map((rowNode) =>
+          getDirectChildrenByLocalName(rowNode, "tc").map((cellNode) =>
+            normalizeDisplayText(extractCellText(cellNode, imageMap)),
+          ),
+        )
+        .filter((row) => row.some(Boolean));
+      if (!rows.length) return [];
 
-    return [
-      {
-        text: `${DOCX_TABLE_TOKEN_PREFIX}${encodeURIComponent(JSON.stringify(rows))}${DOCX_TABLE_TOKEN_SUFFIX}`,
-        highlighted: false,
-      },
-    ];
-  });
+      return [
+        {
+          text: `${DOCX_TABLE_TOKEN_PREFIX}${encodeURIComponent(JSON.stringify(rows))}${DOCX_TABLE_TOKEN_SUFFIX}`,
+          highlighted: false,
+        },
+      ];
+    });
 }
 
 function extractTemplate4QuestionRecords(xmlDocument, imageMap, options = {}) {
@@ -3935,14 +3972,15 @@ function extractTaggedQuestionRecords(xmlDocument, imageMap, options = {}) {
       line.text.match(
         /^(?:question|q|cau hoi|câu hỏi|cau|câu)\s*(\d+)\s*[:.)-]?\s*(.*)$/i,
       ) ||
-      line.text.match(/^(\d+)\s*[.)-]\s*(.+)$/);
+      (!isLikelyCodeLine(line.rawText) &&
+        line.text.match(/^(\d+)\s*[.)-]\s*(.+)$/));
     if (questionStart) {
       if (current && current.question && Object.keys(current.options).length) {
         records.push(current);
       }
       current = {
         number: questionStart[1],
-        type: "single_choice",
+        type: "",
         question: extractQuestionTailRichText(line.rawText, questionStart[2]),
         options: {},
         correctAnswer: "",
@@ -4122,15 +4160,17 @@ function extractHighlightedQuestionRecords(
     }
 
     const questionMatch =
-      line.text.match(/^(?:Question\s+)?(\d+)[.)]\s*(.+)$/i) ||
-      line.text.match(/^(?:Câu\s+)?(\d+)\s*[:.)-]\s*(.+)$/i);
+      line.text.match(/^Question\s+(\d+)[.)]\s*(.+)$/i) ||
+      line.text.match(/^Câu\s+(\d+)\s*[:.)-]\s*(.+)$/i) ||
+      (!isLikelyCodeLine(line.rawText) &&
+        line.text.match(/^(\d+)\s*[:.)-]\s*(.+)$/));
     if (questionMatch) {
       if (current?.question) {
         records.push(current);
       }
       current = {
         number: questionMatch[1],
-        type: "single_choice",
+        type: "",
         question: extractQuestionTailRichText(line.rawText, questionMatch[2]),
         options: {},
         correctAnswer: "",
@@ -4587,7 +4627,9 @@ function normalizeRichText(value) {
 }
 
 function stripRichMarkers(value) {
-  return normalizeRichText(stripDocxFormattingTokens(value));
+  return normalizeRichText(
+    stripDocxFormattingTokens(value).replaceAll(DOCX_CODE_LINE_TOKEN_PREFIX, ""),
+  );
 }
 
 function extractQuestionTailRichText(rawText, plainTail) {
@@ -4681,6 +4723,27 @@ function resolveCorrectAnswer(rawAnswer, optionMap) {
     return "";
   }
 
+  const exactOption = sortOptionEntries(optionMap).find(
+    ([, value]) => normalizeComparableText(value) === normalizedAnswer,
+  );
+  if (exactOption) return exactOption[0];
+
+  const annotatedAnswer = normalizedAnswer.match(/^(.+?)\s*\(([a-z])\)$/i);
+  if (annotatedAnswer) {
+    const letter = annotatedAnswer[2].toUpperCase();
+    return optionMap[letter] &&
+      normalizeComparableText(optionMap[letter]) === annotatedAnswer[1].trim()
+      ? letter : "";
+  }
+
+  // Validate the whole list so an invalid/multiple answer never becomes just A.
+  if (/^[a-z]\s*[,;\/&+]/i.test(normalizedAnswer)) {
+    if (!/^[a-z](?:\s*[,;\/&+]\s*[a-z])+$/i.test(normalizedAnswer)) return "";
+    const letters = normalizedAnswer.toUpperCase().split(/\s*[,;\/&+]\s*/);
+    return letters.every((letter) => optionMap[letter])
+      ? normalizeAnswerSelection(letters.join(",")) : "";
+  }
+
   const letterMatch = normalizedAnswer.match(/^([a-z])(?:[^a-z0-9]|$)/i);
   if (letterMatch && optionMap[letterMatch[1].toUpperCase()]) {
     return letterMatch[1].toUpperCase();
@@ -4721,7 +4784,8 @@ function buildImportedQuestion(record, index) {
     return {
       id: String(record.number || index + 1),
       number: Number(record.number || index + 1),
-      type: record.type || inferQuestionType(record.options),
+      type: correctAnswer.includes(",") ? "multiple_choice"
+        : record.type || inferQuestionType(record.options),
       question: record.question,
       options: record.options,
       correctAnswer,
@@ -4793,7 +4857,7 @@ function buildImportedQuestion(record, index) {
   return {
     id: String(questionNumber),
     number: Number(questionNumber),
-    type: declaredType,
+    type: correctAnswer.includes(",") ? "multiple_choice" : declaredType,
     topic: pickField(record, FIELD_ALIASES.topic),
     difficulty: pickField(record, FIELD_ALIASES.difficulty),
     correctAnswer,

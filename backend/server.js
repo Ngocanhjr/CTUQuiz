@@ -21,7 +21,7 @@ const RESET_QUESTION_BANK_ON_START =
   String(process.env.RESET_QUESTION_BANK_ON_START || "").toLowerCase() ===
   "true";
 const FRONTEND_DIR = path.join(__dirname, "..", "frontend");
-const MAX_BODY_SIZE = 5 * 1024 * 1024;
+const MAX_BODY_SIZE = 50 * 1024 * 1024;
 
 const MIME_TYPES = {
   ".avif": "image/avif",
